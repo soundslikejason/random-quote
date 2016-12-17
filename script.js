@@ -5,17 +5,13 @@ var loadQuote = function() {
     url: "http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=?&lang=en",
     dataType: 'jsonp',
     success: function(data) {
-      $('#quoteText').html(data.quoteText);
-      if (data.quoteAuthor == "") {
-        var quoteAuthor = 'Unknown';
-      $ ('#quoteAuthor').html(quoteAuthor);
-      } else {
-        quoteAuthor = data.quoteAuthor;
-        $('#quoteAuthor').html(quoteAuthor);
-      }
-      // $('#quoteAuthor').html(data.quoteAuthor);
+      var quoteText = data.quoteText;
+      $('#quoteText').html(quoteText);
 
-      twitter = data.quoteText + ' ~ ' + quoteAuthor;
+      var quoteAuthor = data.quoteAuthor;
+      $('#quoteAuthor').html(data.quoteAuthor);
+
+      twitter = quoteText + ' ~ ' + quoteAuthor;
     }
   });
 }
